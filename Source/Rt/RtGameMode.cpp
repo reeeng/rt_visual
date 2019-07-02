@@ -3,6 +3,7 @@
 #include "RtGameMode.h"
 #include "RtHUD.h"
 #include "RtCharacter.h"
+#include "RtGameState.h"
 #include "UObject/ConstructorHelpers.h"
 
 ARtGameMode::ARtGameMode()
@@ -14,4 +15,6 @@ ARtGameMode::ARtGameMode()
 
 	// use our custom HUD class
 	HUDClass = ARtHUD::StaticClass();
+
+	GameStateClass = ARtGameState::StaticClass();
 }
