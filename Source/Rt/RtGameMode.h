@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "RtGameMode.generated.h"
 
+class ARtRestSvc;
+
 UCLASS(minimalapi)
 class ARtGameMode : public AGameModeBase
 {
@@ -15,10 +17,13 @@ public:
 	ARtGameMode();
 
 protected:
+	void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 	void PreInitializeComponents() override;
+	void SpawnGameplayActors();
 	void RefreshItems();
 
 	FTimerHandle TimerHandle_RefreshItems;
+	ARtRestSvc* RESTService;
 };
 
 

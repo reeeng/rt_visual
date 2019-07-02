@@ -4,8 +4,10 @@
 #include "RtHUD.h"
 #include "RtCharacter.h"
 #include "RtGameState.h"
+#include "RtRestSvc.h"
 #include "UObject/ConstructorHelpers.h"
 #include "TimerManager.h"
+#include "Engine/World.h"
 
 ARtGameMode::ARtGameMode()
 	: Super()
@@ -20,8 +22,15 @@ ARtGameMode::ARtGameMode()
 	GameStateClass = ARtGameState::StaticClass();
 }
 
+void ARtGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
+{
+	Super::InitGame(MapName, Options, ErrorMessage);
+	SpawnGameplayActors();
+}
+
 void ARtGameMode::PreInitializeComponents()
 {
+	Super::PreInitializeComponents();
 	ARtGameState* RtGameState = GetGameState<ARtGameState>();
 	
 	if(RtGameState)
@@ -29,6 +38,11 @@ void ARtGameMode::PreInitializeComponents()
 		GetWorldTimerManager().SetTimer(TimerHandle_RefreshItems, this, &ARtGameMode::RefreshItems, RtGameState->GetPollRate(), true);
 	}
 	
+}
+
+void ARtGameMode::SpawnGameplayActors()
+{
+	RESTService = GetWorld()->SpawnActor<ARtRestSvc>();
 }
 
 void ARtGameMode::RefreshItems()
