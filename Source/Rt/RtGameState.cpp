@@ -3,3 +3,7 @@
 
 #include "RtGameState.h"
 
+float ARtGameState::GetPollRate()
+{
+	return PollRate;
+}

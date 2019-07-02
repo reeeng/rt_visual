@@ -13,6 +13,12 @@ class ARtGameMode : public AGameModeBase
 
 public:
 	ARtGameMode();
+
+protected:
+	void PreInitializeComponents() override;
+	void RefreshItems();
+
+	FTimerHandle TimerHandle_RefreshItems;
 };
 
 

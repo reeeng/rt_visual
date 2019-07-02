@@ -5,6 +5,7 @@
 #include "RtCharacter.h"
 #include "RtGameState.h"
 #include "UObject/ConstructorHelpers.h"
+#include "TimerManager.h"
 
 ARtGameMode::ARtGameMode()
 	: Super()
@@ -17,4 +18,19 @@ ARtGameMode::ARtGameMode()
 	HUDClass = ARtHUD::StaticClass();
 
 	GameStateClass = ARtGameState::StaticClass();
+}
+
+void ARtGameMode::PreInitializeComponents()
+{
+	ARtGameState* RtGameState = GetGameState<ARtGameState>();
+	
+	if(RtGameState)
+	{
+		GetWorldTimerManager().SetTimer(TimerHandle_RefreshItems, this, &ARtGameMode::RefreshItems, RtGameState->GetPollRate(), true);
+	}
+	
+}
+
+void ARtGameMode::RefreshItems()
+{
 }

@@ -16,5 +16,11 @@ class RT_API ARtGameState : public AGameStateBase
 	GENERATED_BODY()
 
 private:
-	TArray<FRtItemInfo> Items;
+	TMap<int, FRtItemInfo> Items;
+
+	UPROPERTY(EditDefaultsOnly, Category = "API")
+	float PollRate = 5.0f;
+
+public:
+	float GetPollRate();
 };
