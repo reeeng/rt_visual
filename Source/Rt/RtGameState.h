@@ -21,7 +21,10 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "API")
 	float PollRate = 5.0f;
 
+	UPROPERTY(EditDefaultsOnly, Category = "API")
+	FString APIBaseUrl = TEXT("http://localhost:8085/");
 public:
 	float GetPollRate();
+	FString GetAPIBaseUrl();
 	void SetItems(TArray<FRtItemInfo> NewItems);
 };

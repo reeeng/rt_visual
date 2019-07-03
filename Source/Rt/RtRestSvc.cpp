@@ -2,10 +2,12 @@
 
 
 #include "RtRestSvc.h"
+#include "RtGameState.h"
 #include "ModuleManager.h"
 #include "HttpModule.h"
 #include "IHttpResponse.h"
 #include "JsonUtilities/Public/JsonUtilities.h"
+#include "Engine/World.h"
 
 // Sets default values
 ARtRestSvc::ARtRestSvc()
@@ -20,7 +22,12 @@ ARtRestSvc::ARtRestSvc()
 void ARtRestSvc::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	ARtGameState* GameState = GetWorld()->GetGameState<ARtGameState>();
+
+	if (GameState)
+	{
+		APIBaseUrl = GameState->GetAPIBaseUrl();
+	}
 }
 
 TSharedRef<IHttpRequest> ARtRestSvc::RequestWithRoute(FString Subroute)

@@ -26,7 +26,6 @@ protected:
 
 	FHttpModule* Http;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Configuration")
 	FString APIBaseUrl = TEXT("http://localhost:8085/");
 	
 	TSharedRef<IHttpRequest> RequestWithRoute(FString Subroute);
