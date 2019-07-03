@@ -7,7 +7,7 @@
 #include "RtGameMode.generated.h"
 
 class ARtRestSvc;
-class FRtItemInfo;
+struct FRtItemInfo;
 
 UCLASS(minimalapi)
 class ARtGameMode : public AGameModeBase
