@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/IHttpRequest.h"
+#include "RtTypes.h"
 #include "RtRestSvc.generated.h"
 
 class FHttpModule;
@@ -33,9 +34,9 @@ protected:
 	TSharedRef<IHttpRequest> PostRequest(FString Subroute, FString ContentJsonString);
 	void Send(TSharedRef<IHttpRequest>& Request);
 	bool ResponseIsValid(FHttpResponsePtr Response, bool bWasSuccessful);
+	
+	void OnGetItemInfo(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+public:
+	void GetItemInfo(TMap<int, FRtItemInfo>* Items);
 };
