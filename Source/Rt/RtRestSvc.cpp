@@ -5,10 +5,7 @@
 #include "ModuleManager.h"
 #include "HttpModule.h"
 #include "IHttpResponse.h"
-#include "Serialization/JsonReader.h"
-#include "Serialization/JsonSerializer.h"
-// #include "JsonObjectConverter.h"
-#include "JsonUtilities/Public/JsonObjectConverter.h"
+#include "JsonUtilities/Public/JsonUtilities.h"
 
 // Sets default values
 ARtRestSvc::ARtRestSvc()
@@ -71,15 +68,14 @@ bool ARtRestSvc::ResponseIsValid(FHttpResponsePtr Response, bool bWasSuccessful)
 void ARtRestSvc::OnGetItemInfo(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
 	if(ResponseIsValid(Response, bWasSuccessful))
-	{
-		TMap<int, FRtItemInfo> Items;
+	{	
+		TArray<FRtItemInfo> Items;
 		FString jsonString = Response->GetContentAsString();
-		TArray<FRtItemInfo> ItemsArray;
-		FJsonObjectConverter::JsonArrayStringToUStruct(jsonString, Items);
+		FJsonObjectConverter::JsonArrayStringToUStruct<FRtItemInfo>(jsonString, &Items, 0, 0);
 	}
 }
 
-void ARtRestSvc::GetItemInfo(TMap<int, FRtItemInfo>* Items)
+void ARtRestSvc::GetItemInfo()
 {
 	// Get status update on all items
 	TSharedRef<IHttpRequest> Request = GetRequest("/item");

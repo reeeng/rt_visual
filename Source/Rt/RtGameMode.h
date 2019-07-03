@@ -7,6 +7,7 @@
 #include "RtGameMode.generated.h"
 
 class ARtRestSvc;
+class FRtItemInfo;
 
 UCLASS(minimalapi)
 class ARtGameMode : public AGameModeBase
@@ -21,7 +22,7 @@ protected:
 	void PreInitializeComponents() override;
 	void SpawnGameplayActors();
 	void RefreshItems();
-
+	void OnRefreshItems(TArray<FRtItemInfo> Items);
 	FTimerHandle TimerHandle_RefreshItems;
 	ARtRestSvc* RESTService;
 };

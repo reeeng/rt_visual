@@ -7,3 +7,8 @@ float ARtGameState::GetPollRate()
 {
 	return PollRate;
 }
+
+void ARtGameState::SetItems(TArray<FRtItemInfo> NewItems)
+{
+	Items = NewItems;
+}

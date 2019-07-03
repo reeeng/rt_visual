@@ -38,5 +38,5 @@ protected:
 	void OnGetItemInfo(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 
 public:
-	void GetItemInfo(TMap<int, FRtItemInfo>* Items);
+	void GetItemInfo();
 };

@@ -47,4 +47,15 @@ void ARtGameMode::SpawnGameplayActors()
 
 void ARtGameMode::RefreshItems()
 {
+	RESTService->GetItemInfo();
+}
+
+void ARtGameMode::OnRefreshItems(TArray<FRtItemInfo> Items)
+{
+	ARtGameState* RtGameState = GetGameState<ARtGameState>();
+
+	if (RtGameState)
+	{
+		RtGameState->SetItems(Items);
+	}
 }
