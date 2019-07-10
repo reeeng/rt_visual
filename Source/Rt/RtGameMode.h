@@ -16,13 +16,13 @@ class ARtGameMode : public AGameModeBase
 
 public:
 	ARtGameMode();
-
+	void OnRefreshItems(TArray<FRtItemInfo> Items);
 protected:
 	void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage) override;
 	void PreInitializeComponents() override;
 	void SpawnGameplayActors();
 	void RefreshItems();
-	void OnRefreshItems(TArray<FRtItemInfo> Items);
+
 	FTimerHandle TimerHandle_RefreshItems;
 	ARtRestSvc* RESTService;
 };

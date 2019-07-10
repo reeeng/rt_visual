@@ -2,6 +2,7 @@
 
 
 #include "RtRestSvc.h"
+#include "RtGameMode.h"
 #include "RtGameState.h"
 #include "ModuleManager.h"
 #include "HttpModule.h"
@@ -77,15 +78,21 @@ void ARtRestSvc::OnGetItemInfo(FHttpRequestPtr Request, FHttpResponsePtr Respons
 	if(ResponseIsValid(Response, bWasSuccessful))
 	{	
 		TArray<FRtItemInfo> Items;
-		FString jsonString = Response->GetContentAsString();
-		FJsonObjectConverter::JsonArrayStringToUStruct<FRtItemInfo>(jsonString, &Items, 0, 0);
+		FJsonObjectConverter::JsonArrayStringToUStruct<FRtItemInfo>(Response->GetContentAsString(), &Items, 0, 0);
+
+		ARtGameMode* GameMode = GetWorld()->GetAuthGameMode<ARtGameMode>();
+
+		if(GameMode)
+		{
+			GameMode->OnRefreshItems(Items);
+		}
 	}
 }
 
 void ARtRestSvc::GetItemInfo()
 {
 	// Get status update on all items
-	TSharedRef<IHttpRequest> Request = GetRequest("/item");
+	TSharedRef<IHttpRequest> Request = GetRequest("item");
 	Request->OnProcessRequestComplete().BindUObject(this, &ARtRestSvc::OnGetItemInfo);
 	Send(Request);
 }
