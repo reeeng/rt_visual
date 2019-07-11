@@ -27,4 +27,5 @@ public:
 	float GetPollRate();
 	FString GetAPIBaseUrl();
 	void SetItems(TArray<FRtItemInfo> NewItems);
+	TArray<FRtItemInfo> GetItems();
 };

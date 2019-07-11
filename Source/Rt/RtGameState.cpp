@@ -17,3 +17,8 @@ void ARtGameState::SetItems(TArray<FRtItemInfo> NewItems)
 {
 	Items = NewItems;
 }
+
+TArray<FRtItemInfo> ARtGameState::GetItems()
+{
+	return Items;
+}

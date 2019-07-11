@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "RtItemManager.h"
 #include "RtGameMode.generated.h"
 
 class ARtRestSvc;
@@ -25,6 +26,11 @@ protected:
 
 	FTimerHandle TimerHandle_RefreshItems;
 	ARtRestSvc* RESTService;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<ARtItemManager> ItemManagerClass = ARtItemManager::StaticClass();
+	ARtItemManager* ItemManager;
+
 };
 
 

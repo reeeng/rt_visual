@@ -2,9 +2,9 @@
 
 #include "RtGameMode.h"
 #include "RtHUD.h"
-#include "RtCharacter.h"
 #include "RtGameState.h"
 #include "RtRestSvc.h"
+#include "RtItemManager.h"
 #include "UObject/ConstructorHelpers.h"
 #include "TimerManager.h"
 #include "Engine/World.h"
@@ -43,6 +43,7 @@ void ARtGameMode::PreInitializeComponents()
 void ARtGameMode::SpawnGameplayActors()
 {
 	RESTService = GetWorld()->SpawnActor<ARtRestSvc>();
+	ItemManager = GetWorld()->SpawnActor<ARtItemManager>(GameStateClass);
 }
 
 void ARtGameMode::RefreshItems()
@@ -58,4 +59,6 @@ void ARtGameMode::OnRefreshItems(TArray<FRtItemInfo> Items)
 	{
 		RtGameState->SetItems(Items);
 	}
+
+	ItemManager->RefreshItems();
 }

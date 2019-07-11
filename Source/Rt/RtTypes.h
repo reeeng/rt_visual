@@ -2,7 +2,7 @@
 #include "Vector.h"
 #include "RtTypes.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FRtItemInfo
 {
 	GENERATED_BODY();
