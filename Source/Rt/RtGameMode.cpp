@@ -43,7 +43,7 @@ void ARtGameMode::PreInitializeComponents()
 void ARtGameMode::SpawnGameplayActors()
 {
 	RESTService = GetWorld()->SpawnActor<ARtRestSvc>();
-	ItemManager = GetWorld()->SpawnActor<ARtItemManager>(GameStateClass);
+	ItemManager = GetWorld()->SpawnActor<ARtItemManager>();
 }
 
 void ARtGameMode::RefreshItems()

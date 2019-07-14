@@ -7,10 +7,10 @@ struct FRtItemInfo
 {
 	GENERATED_BODY();
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	int ID;
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	FVector Position;
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	FVector Size;
 };
