@@ -23,12 +23,6 @@ public class NetworkManager : MonoBehaviour, INetworkManager
 
     public ManagerState State { get; private set; }
 
-    //TODO: Remove
-    private void Start()
-    {
-        Startup();
-    }
-
     public void Startup()
     {
         State = ManagerState.Active;
