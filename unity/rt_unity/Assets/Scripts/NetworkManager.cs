@@ -5,7 +5,6 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Models;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityTemplateProjects;
 
 public interface INetworkManager : IManager
