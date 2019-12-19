@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -45,12 +44,27 @@ public class NetworkManager : MonoBehaviour, INetworkManager
     {
         while (isPolling)
         {
-            var itemList = (await GetItems()).items;
-            var items = new Dictionary<int, Item>();
+            List<Item> itemList;
 
-            foreach (var item in itemList)
+            try
             {
-                items[item.Id ?? 0] = item;
+                itemList = (await GetItems()).items;
+            }
+            catch
+            {
+                itemList = null;
+            }
+
+            if (itemList != null)
+            {
+                var items = new Dictionary<int, Item>();
+
+                foreach (var item in itemList)
+                {
+                    items[item.Id ?? 0] = item;
+                }
+
+                Manager.ItemManager.OnFetchItems(items);
             }
 
             await Task.Delay(TimeSpan.FromSeconds(pollingInterval));
