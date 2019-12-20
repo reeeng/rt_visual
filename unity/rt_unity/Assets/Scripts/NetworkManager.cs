@@ -61,7 +61,7 @@ public class NetworkManager : MonoBehaviour, INetworkManager
 
                 foreach (var item in itemList)
                 {
-                    items[item.Id ?? 0] = item;
+                    items.Add(item.id ?? 0, item);
                 }
 
                 Manager.ItemManager.OnFetchItems(items);

@@ -8,9 +8,9 @@ namespace Models
     {
         protected BaseModel(int id)
         {
-            Id = id;
+            id = id;
         }
 
-        [SerializeField] public int? Id;
+        [SerializeField] public int? id;
     }
 }

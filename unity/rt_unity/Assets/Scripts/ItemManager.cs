@@ -12,6 +12,9 @@ namespace UnityTemplateProjects
     public class ItemManager : MonoBehaviour, IItemManager
     {
         public ManagerState State { get; private set; }
+        public GameObject _itemPrefab;
+
+        private readonly Dictionary<int, GameObject> _items = new Dictionary<int, GameObject>();
 
         public void Startup()
         {
@@ -20,7 +23,15 @@ namespace UnityTemplateProjects
 
         public void OnFetchItems(Dictionary<int, Item> newItems)
         {
-            throw new System.NotImplementedException();
+            foreach (var e in newItems)
+            {
+                if (!_items.ContainsKey(e.Key))
+                {
+                    var newItemSpawned = Instantiate(_itemPrefab);
+                    newItemSpawned.GetComponent<Transform>().position = e.Value.position;
+                    _items.Add(e.Key, newItemSpawned);
+                }
+            }
         }
     }
 }
