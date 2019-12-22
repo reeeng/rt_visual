@@ -17,8 +17,9 @@ public class NetworkManager : MonoBehaviour, INetworkManager
 {
     private HttpClient _httpClient;
 
-    public bool isPolling;
-    public float pollingInterval = 5f;
+    private bool _isPolling;
+    private readonly float pollingInterval = 5f;
+    private string _baseUrl = "http://localhost:8085/api/";
 
     public ManagerState State { get; private set; }
 
@@ -28,7 +29,7 @@ public class NetworkManager : MonoBehaviour, INetworkManager
 
         _httpClient = new HttpClient
         {
-            BaseAddress = new Uri("http://localhost:8085/api/"),
+            BaseAddress = new Uri(_baseUrl),
             DefaultRequestHeaders =
             {
                 Accept = {new MediaTypeWithQualityHeaderValue("application/json")}
@@ -36,13 +37,13 @@ public class NetworkManager : MonoBehaviour, INetworkManager
             Timeout = TimeSpan.FromSeconds(pollingInterval - 1f)
         };
 
-        isPolling = true;
+        _isPolling = true;
         PollAsync();
     }
 
     async void PollAsync()
     {
-        while (isPolling)
+        while (_isPolling)
         {
             List<Item> itemList;
 
@@ -83,11 +84,11 @@ public class NetworkManager : MonoBehaviour, INetworkManager
 
     public void StopPolling()
     {
-        isPolling = false;
+        _isPolling = false;
     }
 
     public void StartPolling()
     {
-        isPolling = true;
+        _isPolling = true;
     }
 }
