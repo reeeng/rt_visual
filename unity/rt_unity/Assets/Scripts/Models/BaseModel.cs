@@ -8,9 +8,9 @@ namespace Models
     {
         protected BaseModel(int id)
         {
-            id = id;
+            this.id = id;
         }
 
-        [SerializeField] public int? id;
+        [SerializeField] public int id;
     }
 }
