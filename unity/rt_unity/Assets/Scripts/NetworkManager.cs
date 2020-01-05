@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Models;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityTemplateProjects;
 
 public interface INetworkManager : IManager
@@ -18,8 +19,10 @@ public class NetworkManager : MonoBehaviour, INetworkManager
     private HttpClient _httpClient;
 
     private bool _isPolling;
-    private readonly float pollingInterval = 5f;
-    private string _baseUrl = "http://localhost:8085/api/";
+    [SerializeField]
+    private float pollingInterval = 5f;
+    [SerializeField]
+    private string baseUrl = "http://localhost:8085/api/";
 
     public ManagerState State { get; private set; }
 
@@ -29,7 +32,7 @@ public class NetworkManager : MonoBehaviour, INetworkManager
 
         _httpClient = new HttpClient
         {
-            BaseAddress = new Uri(_baseUrl),
+            BaseAddress = new Uri(baseUrl),
             DefaultRequestHeaders =
             {
                 Accept = {new MediaTypeWithQualityHeaderValue("application/json")}

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Models;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityTemplateProjects
 {
@@ -12,7 +13,8 @@ namespace UnityTemplateProjects
     public class ItemManager : MonoBehaviour, IItemManager
     {
         public ManagerState State { get; private set; }
-        public GameObject _itemPrefab;
+        [SerializeField]
+        public GameObject itemPrefab;
 
         private readonly Dictionary<int, GameObject> _items = new Dictionary<int, GameObject>();
 
@@ -27,7 +29,7 @@ namespace UnityTemplateProjects
             {
                 if (!_items.ContainsKey(e.Key))
                 {
-                    var newItemSpawned = Instantiate(_itemPrefab);
+                    var newItemSpawned = Instantiate(itemPrefab);
                     newItemSpawned.GetComponent<Transform>().position = e.Value.position;
                     _items.Add(e.Key, newItemSpawned);
                 }
