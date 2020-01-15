@@ -29,9 +29,11 @@ namespace UnityTemplateProjects
                 if (!_items.ContainsKey(e.Key))
                 {
                     var newItemSpawned = Instantiate(itemPrefab);
-                    newItemSpawned.GetComponent<Transform>().position = e.Value.position;
                     _items.Add(e.Key, newItemSpawned);
                 }
+
+                _items[e.Key].GetComponent<Transform>().position = e.Value.position;
+                _items[e.Key].GetComponent<Transform>().eulerAngles = e.Value.rotation;
             }
         }
     }

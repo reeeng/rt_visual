@@ -7,13 +7,12 @@ namespace Models
     [Serializable]
     public class Item : BaseModel
     {
-        [SerializeField] public Vector3 position;
-        [SerializeField] public Vector3 size;
+        
+        [SerializeField] public Vector3 rotation;
 
-        public Item(int id, Vector3 position, Vector3 size) : base(id)
+        public Item(int id, Vector3 position, Vector3 rotation) : base(id, position)
         {
-            this.position = position;
-            this.size = size;
+            this.rotation = rotation;
         }
     }
 
