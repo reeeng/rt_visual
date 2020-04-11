@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -127,6 +128,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5145390127047688933, guid: 910a7c7b5ae8c2044b35b76b7b15ebbb,
+        type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145390127047688933, guid: 910a7c7b5ae8c2044b35b76b7b15ebbb,
+        type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 8503021959905392885, guid: f16b583bde012844fae7e2f223ca03cd,
+        type: 3}
+    - target: {fileID: 5145390127047688933, guid: 910a7c7b5ae8c2044b35b76b7b15ebbb,
+        type: 3}
+      propertyPath: itemPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8503021959905392885, guid: f16b583bde012844fae7e2f223ca03cd,
+        type: 3}
+    - target: {fileID: 5145390127047688933, guid: 910a7c7b5ae8c2044b35b76b7b15ebbb,
+        type: 3}
+      propertyPath: itemPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5717683742644220698, guid: be8aa091d4c0b3b41ad74da3cf6ed163,
+        type: 3}
+    - target: {fileID: 5145390127047688933, guid: 910a7c7b5ae8c2044b35b76b7b15ebbb,
+        type: 3}
+      propertyPath: itemPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9048758916251477036, guid: 910a7c7b5ae8c2044b35b76b7b15ebbb,
         type: 3}
       propertyPath: m_Name
@@ -214,8 +243,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273542221}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
