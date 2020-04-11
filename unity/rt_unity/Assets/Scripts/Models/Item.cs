@@ -9,10 +9,12 @@ namespace Models
     {
         
         [SerializeField] public Vector3 rotation;
+        [SerializeField] public int type;
 
-        public Item(int id, Vector3 position, Vector3 rotation) : base(id, position)
+        public Item(int id, Vector3 position, Vector3 rotation, int type) : base(id, position)
         {
             this.rotation = rotation;
+            this.type = type;
         }
     }
 
