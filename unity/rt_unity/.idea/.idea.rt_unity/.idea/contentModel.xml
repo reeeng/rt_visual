@@ -319,19 +319,17 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="ARManager.cs" t="Include" />
           <e p="IManager.cs" t="Include" />
-          <e p="ItemApi.cs" t="Include" />
           <e p="ItemManager.cs" t="Include" />
           <e p="ItemPrefab.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
           <e p="Models" t="Include">
             <e p="BaseModel.cs" t="Include" />
             <e p="Item.cs" t="Include" />
-            <e p="Wrapper.cs" t="Include" />
           </e>
           <e p="NetworkManager.cs" t="Include" />
-          <e p="RestApi.cs" t="Include" />
-          <e p="SimpleCameraController.cs" t="Include" />
+          <e p="StubARManager.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
