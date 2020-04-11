@@ -8,6 +8,7 @@ namespace UnityTemplateProjects
     public interface IItemManager : IManager
     {
         void OnFetchItems(Dictionary<int, Item> newItems);
+        Vector3 AnchorPoint { get; set; }
     }
 
     public class ItemManager : MonoBehaviour, IItemManager
@@ -46,7 +47,7 @@ namespace UnityTemplateProjects
                     _items.Add(e.Key, newItemSpawned);
                 }
 
-                _items[e.Key].GetComponent<Transform>().position = e.Value.position;
+                _items[e.Key].GetComponent<Transform>().position = e.Value.position + AnchorPoint;
                 _items[e.Key].GetComponent<Transform>().eulerAngles = e.Value.rotation;
             }
 
